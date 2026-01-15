@@ -1,6 +1,31 @@
-import React from 'react';
+'use client';
+
+import '../globals.css';
+import React, { useState } from 'react';
 
 export default function HomeV2() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const text = encodeURIComponent('Hola, me interesa información sobre Vista al Valle');
+    const phone = '50489502917';
+    
+    // Detectar si es mobile o desktop
+    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    let url: string;
+    if (isMobile) {
+      // Mobile: usar api.whatsapp.com
+      url = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+    } else {
+      // Desktop: usar web.whatsapp.com
+      url = `https://web.whatsapp.com/send?phone=${phone}&text=${text}`;
+    }
+    
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <>
       <style>{`
@@ -93,20 +118,28 @@ export default function HomeV2() {
                         <a href="https://wa.me/50489502917" className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] px-8 py-4 rounded-none text-base font-bold transition-all shadow-[0_0_30px_rgba(214,184,118,0.3)] hover:shadow-[0_0_50px_rgba(214,184,118,0.5)] text-center">
                             WHATSAPP: 8950-2917
                         </a>
-                        <a href="#video" className="px-8 py-4 rounded-none border border-white/30 text-white hover:bg-white/5 transition-all text-center flex items-center justify-center gap-3">
+                        <button 
+                          onClick={() => setIsVideoOpen(true)}
+                          className="px-8 py-4 rounded-none border border-white/30 text-white hover:bg-white/5 transition-all text-center flex items-center justify-center gap-3"
+                        >
                             <svg className="w-5 h-5 text-[#D6B876]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             VER VIDEO
-                        </a>
+                        </button>
                     </div>
                 </div>
 
                 <div className="relative animate-fade-up delay-200 hidden lg:block">
                     <div className="absolute inset-0 bg-[#D6B876] rounded-full blur-[100px] opacity-20"></div>
-                    {/* Placeholder para imagen principal o video flotante */}
-                    <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] bg-black/40 backdrop-blur-sm flex items-center justify-center group">
-                         <div className="text-center p-10">
-                            <span className="text-6xl mb-4 block">⛰️</span>
-                            <p className="text-white/60 text-sm tracking-widest uppercase">Vista Panorámica al Valle</p>
+                    {/* Imagen principal */}
+                    <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
+                         <img 
+                           src="/foto-hero1.png" 
+                           alt="Vista Panorámica al Valle"
+                           className="w-full h-full object-cover"
+                         />
+                         {/* Degradado inferior para legibilidad del texto */}
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-10">
+                            <p className="text-white text-sm tracking-widest uppercase">Vista Panorámica al Valle</p>
                          </div>
                     </div>
                 </div>
@@ -120,10 +153,26 @@ export default function HomeV2() {
                     
                     {/* Grid de imágenes (Estilo del paste.txt) */}
                     <div className="grid grid-cols-2 gap-4 animate-fade-up">
-                        <div className="rounded-xl h-64 bg-[#183729]/10 flex items-center justify-center text-[#183729]/40 hover:bg-[#D6B876]/20 transition-colors duration-500">Foto Terreno 1</div>
-                        <div className="rounded-xl h-64 bg-[#183729]/5 mt-12 flex items-center justify-center text-[#183729]/40 hover:bg-[#D6B876]/20 transition-colors duration-500">Foto Vistas</div>
-                        <div className="rounded-xl h-64 bg-[#183729]/5 flex items-center justify-center text-[#183729]/40 hover:bg-[#D6B876]/20 transition-colors duration-500">Foto Clima</div>
-                        <div className="rounded-xl h-64 bg-[#183729]/10 mt-12 flex items-center justify-center text-[#183729]/40 hover:bg-[#D6B876]/20 transition-colors duration-500">Foto Calle</div>
+                        <img 
+                          src="/1.png" 
+                          alt="Foto Terreno 1"
+                          className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                        />
+                        <img 
+                          src="/2.png" 
+                          alt="Foto Vistas"
+                          className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12"
+                        />
+                        <img 
+                          src="/3.png" 
+                          alt="Foto Clima"
+                          className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                        />
+                        <img 
+                          src="/4.png" 
+                          alt="Foto Calle"
+                          className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12"
+                        />
                     </div>
 
                     {/* Contenido Texto */}
@@ -188,57 +237,60 @@ export default function HomeV2() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                     {/* Card 1 */}
-                    <div className="group border border-[#183729]/10 p-6 hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <div className="h-48 bg-[#183729]/5 mb-6 flex items-center justify-center text-[#183729]/20 font-display italic text-2xl">
-                            Estándar
+                    <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
+                        <img src="/vav1.jpeg" alt="Parcela A" className="w-full h-48 object-cover" />
+                        <div className="p-6">
+                            <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela A</h3>
+                            <p className="text-[#D6B876] font-bold mb-4">Desde 232 m²</p>
+                            <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
+                                <li className="flex items-center gap-2">✓ Topografía accesible</li>
+                                <li className="flex items-center gap-2">✓ Acceso a calle interna</li>
+                                <li className="flex items-center gap-2">✓ Factibilidad servicios</li>
+                            </ul>
+                            <button className="w-full py-3 border border-[#183729] text-[#183729] font-bold text-sm hover:bg-[#183729] hover:text-white transition-colors">
+                                COTIZAR
+                            </button>
                         </div>
-                        <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela A</h3>
-                        <p className="text-[#D6B876] font-bold mb-4">Desde 232 m²</p>
-                        <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
-                            <li className="flex items-center gap-2">✓ Topografía accesible</li>
-                            <li className="flex items-center gap-2">✓ Acceso a calle interna</li>
-                            <li className="flex items-center gap-2">✓ Factibilidad servicios</li>
-                        </ul>
-                        <button className="w-full py-3 border border-[#183729] text-[#183729] font-bold text-sm hover:bg-[#183729] hover:text-white transition-colors">
-                            COTIZAR
-                        </button>
                     </div>
 
                     {/* Card 2 - Featured */}
-                    <div className="group border border-[#D6B876] p-6 relative bg-white shadow-2xl transform md:-translate-y-4">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#183729] text-[#D6B876] px-4 py-1 text-xs font-bold uppercase tracking-widest">
-                            Más Vendido
+                    <div className="group border border-[#D6B876] overflow-hidden relative bg-white shadow-2xl transform md:-translate-y-4 transition-transform duration-300 hover:md:-translate-y-5">
+                        <div className="relative">
+                            <img src="/vav2.jpeg" alt="Parcela Premium" className="w-full h-48 object-cover" />
+                            {/* Badge flotante encima de la imagen */}
+                            <div className="absolute top-4 right-4 bg-[#183729] text-[#D6B876] px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg z-10 rounded">
+                                Más Vendido
+                            </div>
                         </div>
-                        <div className="h-48 bg-[#183729]/10 mb-6 flex items-center justify-center text-[#183729]/30 font-display italic text-2xl">
-                            Mirador
+                        <div className="p-6">
+                            <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Premium</h3>
+                            <p className="text-[#D6B876] font-bold mb-4">Desde 300 m²</p>
+                            <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
+                                <li className="flex items-center gap-2">✓ Vistas panorámicas</li>
+                                <li className="flex items-center gap-2">✓ Ubicación elevada</li>
+                                <li className="flex items-center gap-2">✓ Mayor privacidad</li>
+                            </ul>
+                            <button className="w-full py-3 bg-[#183729] text-[#D6B876] font-bold text-sm hover:bg-[#0f231a] transition-colors">
+                                COTIZAR
+                            </button>
                         </div>
-                        <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Premium</h3>
-                        <p className="text-[#D6B876] font-bold mb-4">Desde 300 m²</p>
-                        <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
-                            <li className="flex items-center gap-2">✓ Vistas panorámicas</li>
-                            <li className="flex items-center gap-2">✓ Ubicación elevada</li>
-                            <li className="flex items-center gap-2">✓ Mayor privacidad</li>
-                        </ul>
-                        <button className="w-full py-3 bg-[#183729] text-[#D6B876] font-bold text-sm hover:bg-[#0f231a] transition-colors">
-                            COTIZAR
-                        </button>
                     </div>
 
                     {/* Card 3 */}
-                    <div className="group border border-[#183729]/10 p-6 hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <div className="h-48 bg-[#183729]/5 mb-6 flex items-center justify-center text-[#183729]/20 font-display italic text-2xl">
-                            Esquina
+                    <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
+                        <img src="/vav3.jpeg" alt="Parcela Corner" className="w-full h-48 object-cover" />
+                        <div className="p-6">
+                            <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Corner</h3>
+                            <p className="text-[#D6B876] font-bold mb-4">Desde 280 m²</p>
+                            <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
+                                <li className="flex items-center gap-2">✓ Doble acceso</li>
+                                <li className="flex items-center gap-2">✓ Mayor fachada</li>
+                                <li className="flex items-center gap-2">✓ Ideal inversión</li>
+                            </ul>
+                            <button className="w-full py-3 border border-[#183729] text-[#183729] font-bold text-sm hover:bg-[#183729] hover:text-white transition-colors">
+                                COTIZAR
+                            </button>
                         </div>
-                        <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Corner</h3>
-                        <p className="text-[#D6B876] font-bold mb-4">Desde 280 m²</p>
-                        <ul className="space-y-2 mb-8 text-sm text-[#202525]/70">
-                            <li className="flex items-center gap-2">✓ Doble acceso</li>
-                            <li className="flex items-center gap-2">✓ Mayor fachada</li>
-                            <li className="flex items-center gap-2">✓ Ideal inversión</li>
-                        </ul>
-                        <button className="w-full py-3 border border-[#183729] text-[#183729] font-bold text-sm hover:bg-[#183729] hover:text-white transition-colors">
-                            COTIZAR
-                        </button>
                     </div>
                 </div>
             </div>
@@ -265,6 +317,54 @@ export default function HomeV2() {
         <footer className="bg-[#11251c] text-white/40 py-12 text-center text-sm">
             <p>© 2026 Vista al Valle. Todos los derechos reservados.</p>
         </footer>
+
+        {/* Modal de Video */}
+        {isVideoOpen && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsVideoOpen(false)}
+          >
+            <div 
+              className="relative max-w-5xl w-full mx-4 aspect-video"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Botón de cerrar */}
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute -top-12 right-0 text-white hover:text-[#D6B876] transition-colors text-2xl font-bold"
+                aria-label="Cerrar video"
+              >
+                ✕
+              </button>
+              
+              {/* Video */}
+              <video
+                autoPlay
+                controls
+                className="w-full h-full rounded-lg"
+                src="/vista-al-valle.mp4"
+              >
+                Tu navegador no soporta el elemento de video.
+              </video>
+            </div>
+          </div>
+        )}
+
+        {/* Botón flotante de WhatsApp */}
+        <a
+          href="https://wa.me/50489502917?text=Hola,%20me%20interesa%20información%20sobre%20Vista%20al%20Valle"
+          onClick={handleWhatsAppClick}
+          className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse cursor-pointer"
+          aria-label="Contactar por WhatsApp"
+        >
+          <svg 
+            className="w-8 h-8 text-white" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.77.966-.944 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </a>
 
       </div>
     </>

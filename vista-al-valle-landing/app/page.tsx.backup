@@ -1,0 +1,70 @@
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-white text-gray-900 font-sans">
+      
+      {/* 1. Header / Barra de Navegación */}
+      <header className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <div className="text-2xl font-bold text-green-800">
+            Vista al Valle
+          </div>
+          <nav className="hidden md:flex gap-8">
+            <a href="#inicio" className="hover:text-green-700 transition">Inicio</a>
+            <a href="#modelos" className="hover:text-green-700 transition">Modelos</a>
+            <a href="#ubicacion" className="hover:text-green-700 transition">Ubicación</a>
+            <a href="#contacto" className="hover:text-green-700 transition">Contacto</a>
+          </nav>
+          <button className="bg-green-700 text-white px-6 py-2 rounded-full hover:bg-green-800 transition">
+            Agendar Visita
+          </button>
+        </div>
+      </header>
+
+      {/* 2. Hero Section (Portada) */}
+      <main className="pt-20">
+        <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden">
+          {/* Video de fondo */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/vista-al-valle.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay oscuro para legibilidad */}
+          <div className="absolute inset-0 bg-black/40 z-10"></div>
+          
+          {/* Contenido centrado sobre el video */}
+          <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+              Invierte en <br/>
+              <span className="text-[#D6B876]">Tierra Firme</span>
+            </h1>
+            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+              La única salida al norte de Tegucigalpa sin tráfico. Terrenos desde 232m² en un entorno de privacidad, clima fresco y plusvalía asegurada.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://wa.me/50489502917" 
+                className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] text-lg px-8 py-4 rounded-full font-bold transition shadow-lg"
+              >
+                WHATSAPP: 8950-2917
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Aquí iremos agregando las demás secciones... */}
+      </main>
+
+      <footer className="bg-gray-900 text-white py-12 text-center">
+        <p>© 2026 Residencial Vista al Valle. Todos los derechos reservados.</p>
+      </footer>
+    </div>
+  );
+}
