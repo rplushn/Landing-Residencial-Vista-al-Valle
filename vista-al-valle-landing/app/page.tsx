@@ -12,7 +12,7 @@ export default function Home() {
   const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const text = encodeURIComponent('Hola, me interesa información sobre Vista al Valle');
-    const phone = '50489502917';
+    const phone = '50489124723';
     
     // Detectar si es mobile o desktop
     const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -130,7 +130,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="https://wa.me/50489502917" className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] px-8 py-4 rounded-none text-base font-bold transition-all shadow-[0_0_30px_rgba(214,184,118,0.3)] hover:shadow-[0_0_50px_rgba(214,184,118,0.5)] text-center">
+                        <a href="https://wa.me/50489124723" className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] px-8 py-4 rounded-none text-base font-bold transition-all shadow-[0_0_30px_rgba(214,184,118,0.3)] hover:shadow-[0_0_50px_rgba(214,184,118,0.5)] text-center">
                             WHATSAPP: 9737-3342
                         </a>
                     </div>
@@ -141,7 +141,7 @@ export default function Home() {
                     {/* Imagen principal */}
                     <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
                          <img 
-                           src="/foto-hero1.png" 
+                           src="/foto-hero2.png" 
                            alt="Vista Panorámica al Valle"
                            className="w-full h-full object-cover"
                          />
@@ -284,7 +284,7 @@ export default function Home() {
                         </div>
 
                         <div className="mt-12">
-                             <a href="https://wa.me/50489502917" className="inline-flex items-center gap-3 text-[#183729] font-bold border-b-2 border-[#D6B876] pb-1 hover:text-[#D6B876] transition-colors">
+                             <a href="https://wa.me/50489124723" className="inline-flex items-center gap-3 text-[#183729] font-bold border-b-2 border-[#D6B876] pb-1 hover:text-[#D6B876] transition-colors">
                                 INICIAR PROCESO AHORA
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                              </a>
@@ -372,7 +372,7 @@ export default function Home() {
                  
                  <div className="flex flex-col sm:flex-row justify-center gap-4">
                      <a href="https://wa.me/50489502917" className="bg-[#D6B876] text-[#183729] px-8 py-4 font-bold hover:bg-[#c4a662] transition-colors shadow-lg">
-                        WHATSAPP: 8950-2917
+                        WHATSAPP: 8912-4723
                      </a>
                      <a href="tel:+50497373342" className="border border-white/30 text-white px-8 py-4 font-bold hover:bg-white/10 transition-colors">
                         LLAMAR: 9737-3342
@@ -419,7 +419,7 @@ export default function Home() {
 
         {/* Botón flotante de WhatsApp */}
         <a
-          href="https://wa.me/50489502917?text=Hola,%20me%20interesa%20información%20sobre%20Vista%20al%20Valle"
+          href="https://wa.me/50489124723?text=Hola,%20me%20interesa%20información%20sobre%20Vista%20al%20Valle"
           onClick={handleWhatsAppClick}
           className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 animate-pulse cursor-pointer"
           aria-label="Contactar por WhatsApp"
