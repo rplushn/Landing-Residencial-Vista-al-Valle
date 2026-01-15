@@ -161,7 +161,7 @@ export default function Home() {
                     {/* Imagen principal */}
                     <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
                          <img 
-                           src="/foto-hero3.png" 
+                           src="/foto-hero4.png" 
                            alt="Vista Panorámica al Valle"
                            className="w-full h-full object-cover"
                          />
