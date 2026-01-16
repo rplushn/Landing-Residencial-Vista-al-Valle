@@ -141,12 +141,12 @@ export default function Home() {
                     </div>
                     
                     <h1 className="font-display text-5xl lg:text-7xl text-white leading-[1.1] mb-8">
-                        Cansado del Tráfico <br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6B876] to-[#Fbf6e3]">en Tegucigalpa? Firme</span>
+                        Escápate del Caos <br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6B876] to-[#Fbf6e3]">de la Capital</span>
                     </h1>
                     
                     <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
-                        Salida al norte es tu opcion, sin tráfico y clima fresco. Terrenos desde 360 varas cuadradas, en un entorno de privacidad y plusvalía asegurada.
+                        Terrenos desde 360 varas cuadradas. Aire puro, tranquilidad y seguridad. Financiamiento sin banco, acceso inmediato. Tu patrimonio empieza HOY.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
@@ -164,7 +164,7 @@ export default function Home() {
                     {/* Imagen principal */}
                     <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
                          <img 
-                           src="/foto-hero4.png" 
+                           src="/HERO_CORREGIDO.png" 
                            alt="Vista Panorámica al Valle"
                            className="w-full h-full object-cover"
                          />
