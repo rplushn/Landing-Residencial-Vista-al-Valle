@@ -2,6 +2,7 @@
 
 import './globals.css';
 import React, { useState, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -163,10 +164,13 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[#D6B876] rounded-full blur-[100px] opacity-20"></div>
                     {/* Imagen principal */}
                     <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
-                         <img 
-                           src="/HERO_CORREGIDO.png" 
+                         <Image 
+                           src="/HERO_CORREGIDO.webp" 
                            alt="Vista Panorámica al Valle"
+                           width={800}
+                           height={1000}
                            className="w-full h-full object-cover"
+                           priority={true}
                          />
                          {/* Degradado inferior para legibilidad del texto */}
                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-10">
@@ -195,6 +199,7 @@ export default function Home() {
                             loop
                             autoPlay
                             playsInline
+                            preload="none"
                         />
                     </div>
                     
@@ -205,6 +210,9 @@ export default function Home() {
                             src="/vista-al-valle.mp4"
                             poster="/thumbnail-video.jpg"
                             controls
+                            muted
+                            preload="none"
+                            playsInline
                             className="w-full h-full object-cover"
                             onPlay={() => setIsVideoPlaying(true)}
                             onPause={() => setIsVideoPlaying(false)}
@@ -244,47 +252,59 @@ export default function Home() {
                     {/* Grid de imágenes (Estilo del paste.txt) */}
                     <div className="grid grid-cols-2 gap-4 animate-fade-up">
                         <button
-                          onClick={() => setSelectedImage('/1.png')}
+                          onClick={() => setSelectedImage('/1.webp')}
                           className="w-full h-64 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D6B876] focus:ring-offset-2"
                           aria-label="Ver Foto Terreno 1 en tamaño completo"
                         >
-                          <img 
-                            src="/1.png" 
+                          <Image 
+                            src="/1.webp" 
                             alt="Foto Terreno 1"
+                            width={400}
+                            height={256}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </button>
                         <button
-                          onClick={() => setSelectedImage('/2.png')}
+                          onClick={() => setSelectedImage('/2.webp')}
                           className="w-full h-64 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12 overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D6B876] focus:ring-offset-2"
                           aria-label="Ver Foto Vistas en tamaño completo"
                         >
-                          <img 
-                            src="/2.png" 
+                          <Image 
+                            src="/2.webp" 
                             alt="Foto Vistas"
+                            width={400}
+                            height={256}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </button>
                         <button
-                          onClick={() => setSelectedImage('/3.png')}
+                          onClick={() => setSelectedImage('/3.webp')}
                           className="w-full h-64 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D6B876] focus:ring-offset-2"
                           aria-label="Ver Foto Clima en tamaño completo"
                         >
-                          <img 
-                            src="/3.png" 
+                          <Image 
+                            src="/3.webp" 
                             alt="Foto Clima"
+                            width={400}
+                            height={256}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </button>
                         <button
-                          onClick={() => setSelectedImage('/4.png')}
+                          onClick={() => setSelectedImage('/4.webp')}
                           className="w-full h-64 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12 overflow-hidden focus:outline-none focus:ring-2 focus:ring-[#D6B876] focus:ring-offset-2"
                           aria-label="Ver Foto Calle en tamaño completo"
                         >
-                          <img 
-                            src="/4.png" 
+                          <Image 
+                            src="/4.webp" 
                             alt="Foto Calle"
+                            width={400}
+                            height={256}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </button>
                     </div>
@@ -295,7 +315,7 @@ export default function Home() {
                             Sin Complicaciones
                         </div>
                         <h2 className="font-display text-4xl lg:text-5xl text-[#183729] mb-6">
-                            Tu terreno en 4 pasos simples.
+                            Tu terreno en 3 pasos simples.
                         </h2>
                         <p className="text-[#202525]/80 text-lg mb-12 leading-relaxed">
                             Hemos eliminado la burocracia. Invertir en tu patrimonio en la salida al norte es tan directo como parece.
@@ -352,7 +372,7 @@ export default function Home() {
                 <div className="grid md:grid-cols-3 gap-8">
                     {/* Card 1 */}
                     <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <img src="/vav1.jpeg" alt="Parcela A" className="w-full h-48 object-cover" />
+                        <Image src="/vav1.jpeg" alt="Parcela A" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                         <div className="p-6">
                             <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela A</h3>
                             <p className="text-[#D6B876] font-bold mb-4">Desde 340 varas cuadradas</p>
@@ -370,7 +390,7 @@ export default function Home() {
                     {/* Card 2 - Featured */}
                     <div className="group border border-[#D6B876] overflow-hidden relative bg-white shadow-2xl transform md:-translate-y-4 transition-transform duration-300 hover:md:-translate-y-5">
                         <div className="relative">
-                            <img src="/vav2.jpeg" alt="Parcela Premium" className="w-full h-48 object-cover" />
+                            <Image src="/vav2.jpeg" alt="Parcela Premium" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                             {/* Badge flotante encima de la imagen */}
                             <div className="absolute top-4 right-4 bg-[#183729] text-[#D6B876] px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg z-10 rounded">
                                 Más Vendido
@@ -392,7 +412,7 @@ export default function Home() {
 
                     {/* Card 3 */}
                     <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <img src="/vav3.jpeg" alt="Parcela Corner" className="w-full h-48 object-cover" />
+                        <Image src="/vav3.jpeg" alt="Parcela Corner" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                         <div className="p-6">
                             <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Corner</h3>
                             <p className="text-[#D6B876] font-bold mb-4">Desde 600 varas cuadradas</p>
@@ -455,6 +475,9 @@ export default function Home() {
               <video
                 autoPlay
                 controls
+                muted
+                preload="none"
+                playsInline
                 className="w-full h-full rounded-lg"
                 src="/vista-al-valle.mp4"
               >

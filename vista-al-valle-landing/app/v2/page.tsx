@@ -2,6 +2,7 @@
 
 import '../globals.css';
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function HomeV2() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -132,10 +133,13 @@ export default function HomeV2() {
                     <div className="absolute inset-0 bg-[#D6B876] rounded-full blur-[100px] opacity-20"></div>
                     {/* Imagen principal */}
                     <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl aspect-[4/5] group">
-                         <img 
-                           src="/foto-hero1.png" 
+                         <Image 
+                           src="/foto-hero1.webp" 
                            alt="Vista Panorámica al Valle"
+                           width={800}
+                           height={1000}
                            className="w-full h-full object-cover"
+                           priority={true}
                          />
                          {/* Degradado inferior para legibilidad del texto */}
                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end justify-center pb-10">
@@ -153,25 +157,37 @@ export default function HomeV2() {
                     
                     {/* Grid de imágenes (Estilo del paste.txt) */}
                     <div className="grid grid-cols-2 gap-4 animate-fade-up">
-                        <img 
-                          src="/1.png" 
+                        <Image 
+                          src="/1.webp" 
                           alt="Foto Terreno 1"
+                          width={400}
+                          height={256}
                           className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
                         />
-                        <img 
-                          src="/2.png" 
+                        <Image 
+                          src="/2.webp" 
                           alt="Foto Vistas"
+                          width={400}
+                          height={256}
                           className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12"
+                          loading="lazy"
                         />
-                        <img 
-                          src="/3.png" 
+                        <Image 
+                          src="/3.webp" 
                           alt="Foto Clima"
+                          width={400}
+                          height={256}
                           className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
                         />
-                        <img 
-                          src="/4.png" 
+                        <Image 
+                          src="/4.webp" 
                           alt="Foto Calle"
+                          width={400}
+                          height={256}
                           className="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500 mt-12"
+                          loading="lazy"
                         />
                     </div>
 
@@ -238,7 +254,7 @@ export default function HomeV2() {
                 <div className="grid md:grid-cols-3 gap-8">
                     {/* Card 1 */}
                     <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <img src="/vav1.jpeg" alt="Parcela A" className="w-full h-48 object-cover" />
+                        <Image src="/vav1.jpeg" alt="Parcela A" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                         <div className="p-6">
                             <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela A</h3>
                             <p className="text-[#D6B876] font-bold mb-4">Desde 232 m²</p>
@@ -256,7 +272,7 @@ export default function HomeV2() {
                     {/* Card 2 - Featured */}
                     <div className="group border border-[#D6B876] overflow-hidden relative bg-white shadow-2xl transform md:-translate-y-4 transition-transform duration-300 hover:md:-translate-y-5">
                         <div className="relative">
-                            <img src="/vav2.jpeg" alt="Parcela Premium" className="w-full h-48 object-cover" />
+                            <Image src="/vav2.jpeg" alt="Parcela Premium" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                             {/* Badge flotante encima de la imagen */}
                             <div className="absolute top-4 right-4 bg-[#183729] text-[#D6B876] px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg z-10 rounded">
                                 Más Vendido
@@ -278,7 +294,7 @@ export default function HomeV2() {
 
                     {/* Card 3 */}
                     <div className="group border border-[#183729]/10 overflow-hidden hover:border-[#D6B876] transition-all duration-300 hover:shadow-xl bg-[#FAFAF8]">
-                        <img src="/vav3.jpeg" alt="Parcela Corner" className="w-full h-48 object-cover" />
+                        <Image src="/vav3.jpeg" alt="Parcela Corner" width={400} height={192} className="w-full h-48 object-cover" loading="lazy" />
                         <div className="p-6">
                             <h3 className="font-display text-2xl text-[#183729] mb-2">Parcela Corner</h3>
                             <p className="text-[#D6B876] font-bold mb-4">Desde 280 m²</p>
@@ -341,6 +357,9 @@ export default function HomeV2() {
               <video
                 autoPlay
                 controls
+                muted
+                preload="none"
+                playsInline
                 className="w-full h-full rounded-lg"
                 src="/vista-al-valle.mp4"
               >
