@@ -153,6 +153,9 @@ export default function Home() {
                         <a href="https://wa.me/50497373342" className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] px-8 py-4 rounded-none text-base font-bold transition-all shadow-[0_0_30px_rgba(214,184,118,0.3)] hover:shadow-[0_0_50px_rgba(214,184,118,0.5)] text-center">
                             WHATSAPP: 9737-3342
                         </a>
+                        <a href="/Vista-al-Valle.pdf" download="Vista-al-Valle.pdf" className="bg-[#D6B876] hover:bg-[#c4a662] text-[#183729] px-8 py-4 rounded-none text-base font-bold transition-all shadow-[0_0_30px_rgba(214,184,118,0.3)] hover:shadow-[0_0_50px_rgba(214,184,118,0.5)] text-center">
+                            📄 DESCARGAR CATÁLOGO
+                        </a>
                     </div>
                 </div>
 
