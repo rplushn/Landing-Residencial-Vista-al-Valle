@@ -13,7 +13,7 @@ export default function Home() {
   const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const text = encodeURIComponent('Hola, me interesa información sobre Vista al Valle');
-    const phone = '50489124723';
+    const phone = '50497373342';
     
     // Detectar si es mobile o desktop
     const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -141,12 +141,12 @@ export default function Home() {
                     </div>
                     
                     <h1 className="font-display text-5xl lg:text-7xl text-white leading-[1.1] mb-8">
-                        Invierte en <br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6B876] to-[#Fbf6e3]">Tierra Firme</span>
+                        Cansado del Tráfico <br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D6B876] to-[#Fbf6e3]">en Tegucigalpa? Firme</span>
                     </h1>
                     
                     <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
-                        La única salida al norte de Tegucigalpa sin tráfico. Terrenos desde 232m² en un entorno de privacidad, clima fresco y plusvalía asegurada.
+                        Salida al norte es tu opcion, sin tráfico y clima fresco. Terrenos desde 360 varas cuadradas, en un entorno de privacidad y plusvalía asegurada.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4">
